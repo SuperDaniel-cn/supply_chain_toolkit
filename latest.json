@@ -1,1 +1,5 @@
-public/latest.json
+{
+  "version": "0.1.0-beta.2",
+  "notes": "更新离线使用说明，新增智能导读，并完成各模块术语与当前界面的对齐。",
+  "downloadUrl": "https://pan.xunlei.com/s/VP1mnS_4Vc9pAVDJJg0QC6NdA1?pwd=rv6r"
+}
