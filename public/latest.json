@@ -1,0 +1,5 @@
+{
+  "version": "0.1.0-beta.7",
+  "notes": "本次更新：\n- 支持表格剪贴板粘贴导入，无需先存为文件\n- 合并新建策略与目标参数配置，一步建组直达详情\n- 策略详情页支持随时调整参数目标\n- 单次导入规格提升至 32 MB 且最多 100,000 行\n- 同步更新离线用户指南",
+  "downloadUrl": "https://pan.xunlei.com/s/VP1mnS_4Vc9pAVDJJg0QC6NdA1?pwd=rv6r"
+}

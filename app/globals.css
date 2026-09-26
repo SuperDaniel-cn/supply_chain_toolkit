@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b1115;
+  --foreground: #eceee9;
+  --surface: #151f25;
+  --surface-hover: #1b2930;
+  --surface-subtle: #10191e;
+  --border: #28353c;
+  --border-strong: #44525a;
+  --accent: #a9bd88;
+  --warm: #c6ac94;
+  --muted: #9da9ad;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  max-width: 100vw;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0px;
+}
+::-webkit-scrollbar:horizontal {
+  display: none;
+  height: 0px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1115;
+}
+::-webkit-scrollbar-thumb {
+  background: #28353c;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #44525a;
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(169, 189, 136, 0.018) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 189, 136, 0.018) 1px, transparent 1px);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(169, 189, 136, 0.045) 0%, rgba(198, 172, 148, 0.018) 40%, transparent 70%);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  28%, 100% {
+    transform: translateX(240%) skewX(-18deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes marquee-conveyor-ltr {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-conveyor-strip {
+  display: flex;
+  width: max-content;
+}
+
+.animate-conveyor-track {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee-conveyor-ltr 42s linear infinite;
+}
+
+.animate-conveyor-strip:hover .animate-conveyor-track {
+  animation-play-state: paused;
+}
