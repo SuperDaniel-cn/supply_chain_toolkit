@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: oklch(0.145 0 0);
+  --color-card: oklch(0.205 0 0);
+  --color-fg: oklch(0.985 0 0);
+  --color-muted: oklch(0.708 0 0);
+  --color-faint: oklch(0.556 0 0);
+  --color-rule: oklch(1 0 0 / 10%);
+  --color-brand: #bd1617;
+  --color-brand-bright: #f0524c;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "HarmonyOS Sans SC", "MiSans",
+    "Microsoft YaHei", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 77.5rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @variant md {
+    padding-inline: 2.5rem;
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-brand) 28%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes beacon {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.8);
+  }
+}
+
+.animate-beacon {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: beacon 2.4s ease-out infinite;
+}
+
+@keyframes float-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+  }
+  16% {
+    transform: translate3d(28px, 18px, 0) rotate(-6.8deg) scale(1.018);
+  }
+  33% {
+    transform: translate3d(38px, -16px, 0) rotate(-7.5deg) scale(1.006);
+  }
+  49% {
+    transform: translate3d(8px, -28px, 0) rotate(-9.2deg) scale(1.022);
+  }
+  65% {
+    transform: translate3d(-30px, -12px, 0) rotate(-9.8deg) scale(0.994);
+  }
+  81% {
+    transform: translate3d(-34px, 22px, 0) rotate(-8.4deg) scale(1.014);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+  }
+}
+
+.animate-float-drift {
+  transform: rotate(-8deg);
+  animation: float-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-beacon,
+  .animate-float-drift {
+    animation: none;
+  }
+}
+
+[data-hero-stage='playing'] {
+  height: calc(100svh - 4.0625rem);
+  overflow: hidden;
+}
+
+[data-hero-stage='playing'] .hero-camera {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-anchor: none;
+  overscroll-behavior: none;
+}
+
+[data-hero-stage='playing'] .hero-camera::after {
+  content: '';
+  flex: 0 0 auto;
+  height: 70svh;
+}
+
+html:has([data-hero-stage='playing']),
+html:has([data-hero-stage='playing']) body {
+  overflow: hidden;
+  overflow-anchor: none;
+  overscroll-behavior: none;
+  scroll-behavior: auto;
+}
+
